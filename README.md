@@ -1,11 +1,86 @@
-# YouTube-Storage
-  Программа предназначена для кодирования любых данных в видеоформат .mp4 или .avi для последующего хранения на Ютуб.
-Видео можно скачать, обратно декодировать и получить исходный файл. Программа не запоминает оригинальные имена и расширения файлов, поэтому либо сохраняйте оригинальное название с расширением, например "Фото.7z.avi", либо преобразуйте в RAR/Zip архив. Рекомендуется паковать важные данные Zip архивом без сжатия с возможностью восстановления архива при повреждении, к примеру WinRAR-ом.
+# Video Encode (Python + GUI)
 
-  Возможные кодеки сжатия:
-mp4v	DivX/XviD сжатие - расходует много диского пространства - контейнер .mp4
-MJPG	Motion JPEG - контейнер .avi, расходует немного меньше диского пространства, но надёжность выше.
-FFV1	Беспотерьный кодек - контейнер .avi, расходует ещё меньше диского пространства, максимальная надёжность.
-x264	Оптимальный кодек - контейнер .avi/.mp4 - тратит в разы меньше диского пространства, при высокой скорости.
+This repository now includes a full Python implementation with a desktop GUI for encoding binary files into video frames and decoding videos back into files.
 
-  Внимание! Для использования x264/h264/avc кодека "openh264-1.8.0-win64.dll" должен лежать в папке с программой. При установке рекомендуется выбирать раздел диска с максимальным свободным пространством.
+The original C++ proof-of-concept remains in the repo, but the recommended workflow is the Python app because it is easier to set up and run on different machines.
+
+## What It Does
+
+- Encodes any file into color-coded video frames
+- Decodes a generated video back into the original bytes
+- Provides a GUI for selecting files, tuning settings, and tracking progress
+
+## Tech Stack
+
+- Python 3.10+
+- OpenCV (`opencv-python`)
+- NumPy
+- Tkinter (included with standard Python on Windows)
+
+## Quick Start (Windows)
+
+1. Create and activate a virtual environment:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+2. Install dependencies:
+
+```powershell
+pip install -r requirements.txt
+```
+
+3. Launch the GUI:
+
+```powershell
+python main.py
+```
+
+## GUI Workflow
+
+### Encode
+
+1. Select an input file (any binary file).
+2. Choose output video path (`.mp4` or `.avi`).
+3. Click **Start Encode**.
+
+### Decode
+
+1. Select encoded input video.
+2. Choose output file path.
+3. Click **Start Decode**.
+
+### Verify Integrity (No Corruption Check)
+
+1. Ensure **Input file** (Encode tab) points to the original file.
+2. Ensure **Output file** (Decode tab) points to the recovered file.
+3. Click **Verify (SHA-256)**.
+
+The app reports PASS/FAIL based on SHA-256 hash equality.
+
+## Recommended Settings
+
+- Width: `2560`
+- Height: `1440`
+- Pixel size: `8`
+- FPS: `30`
+- Frames per chunk: `1`
+- Codec: `mp4v` for `.mp4`
+
+If your machine cannot open/write MP4 with `mp4v`, use:
+
+- Codec: `MJPG`
+- Output extension: `.avi`
+
+One-click option: In **Settings**, click **Apply High-Accuracy Preset**.
+This sets `FFV1`, `pixel_size=8`, `tolerance=120`, and updates output extension to `.avi`.
+
+You can also click **Run Round-Trip Test** in **Settings** to run a full random-file test and get a GUI PASS/FAIL result.
+
+## Notes
+
+- Encoder and decoder must use matching settings (resolution, pixel size, frames-per-chunk, tolerance).
+- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, `MJPG` + `.avi`) and larger pixel sizes.
+- After decode, the GUI automatically runs a hash check when the original input file path is available.
