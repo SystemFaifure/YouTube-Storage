@@ -2,8 +2,6 @@
 
 This repository now includes a full Python implementation with a desktop GUI for encoding binary files into video frames and decoding videos back into files.
 
-The original C++ proof-of-concept remains in the repo, but the recommended workflow is the Python app because it is easier to set up and run on different machines.
-
 ## What It Does
 
 - Encodes any file into color-coded video frames
