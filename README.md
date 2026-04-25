@@ -1,4 +1,4 @@
-# Video Encode (Python + GUI)
+# YouTube-Storage (Python + GUI)
 
 This repository now includes a full Python implementation with a desktop GUI for encoding binary files into video frames and decoding videos back into files.
 
@@ -12,38 +12,23 @@ The original C++ proof-of-concept remains in the repo, but the recommended workf
 
 ## Tech Stack
 
-- Python 3.10+
-- OpenCV (`opencv-python`)
+- Python 3.9+
+- OpenCV-Python
+- OpenCV-Python-Headless
 - NumPy
-- Tkinter (included with standard Python on Windows)
+- Packaging
 
 ## Quick Start (Windows)
 
-1. Create and activate a virtual environment:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-2. Install dependencies:
-
-```powershell
-pip install -r requirements.txt
-```
-
-3. Launch the GUI:
-
-```powershell
-python main.py
-```
+1. Start "YouTube-StorageSetup.bat" script
+2. Launch the GUI script "YouTube-StorageRun.bat"
 
 ## GUI Workflow
 
 ### Encode
 
 1. Select an input file (any binary file).
-2. Choose output video path (`.mp4` or `.avi`).
+2. Choose output video path ('.mp4' or '.avi').
 3. Click **Start Encode**.
 
 ### Decode
@@ -62,25 +47,25 @@ The app reports PASS/FAIL based on SHA-256 hash equality.
 
 ## Recommended Settings
 
-- Width: `2560`
-- Height: `1440`
-- Pixel size: `8`
-- FPS: `30`
-- Frames per chunk: `1`
-- Codec: `mp4v` for `.mp4`
+- Width: '2560'
+- Height: '1440'
+- Pixel size: '8'
+- FPS: '30'
+- Frames per chunk: '1'
+- Codec: 'x264' for '.avi'
 
-If your machine cannot open/write MP4 with `mp4v`, use:
+If your machine cannot open/write MP4 with 'x264', use:
 
-- Codec: `MJPG`
-- Output extension: `.avi`
+- Codec: 'MJPG'/'FFV1'
+- Output extension: '.avi'
 
 One-click option: In **Settings**, click **Apply High-Accuracy Preset**.
-This sets `FFV1`, `pixel_size=8`, `tolerance=120`, and updates output extension to `.avi`.
+This sets 'FFV1', 'pixel_size=8', 'tolerance=120', and updates output extension to '.avi'.
 
 You can also click **Run Round-Trip Test** in **Settings** to run a full random-file test and get a GUI PASS/FAIL result.
 
 ## Notes
 
 - Encoder and decoder must use matching settings (resolution, pixel size, frames-per-chunk, tolerance).
-- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, `MJPG` + `.avi`) and larger pixel sizes.
+- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, 'MJPG' + '.avi') and larger pixel sizes.
 - After decode, the GUI automatically runs a hash check when the original input file path is available.

@@ -1,5 +1,5 @@
 @echo off
-title YouTube Encrypter Encoder
+title YouTube-Storage
 echo.
   call runtime\Scripts\activate
   python main.py
