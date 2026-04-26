@@ -32,7 +32,7 @@ class VideoEncodeApp(tk.Tk):
 
         self.width_var = tk.IntVar(value=2560)
         self.height_var = tk.IntVar(value=1440)
-        self.pixel_size_var = tk.IntVar(value=4)
+        self.pixel_size_var = tk.IntVar(value=8)
         self.fps_var = tk.IntVar(value=30)
         self.frames_per_chunk_var = tk.IntVar(value=1)
         self.codec_var = tk.StringVar(value="FFV1")
@@ -164,7 +164,7 @@ class VideoEncodeApp(tk.Tk):
         path = filedialog.asksaveasfilename(
             title="Save encoded video",
             defaultextension=".avi",
-            filetypes=[("MP4", "*.mp4"), ("AVI", "*.avi"), ("All files", "*.*")],
+            filetypes=[("AVI", "*.avi"), ("MP4", "*.mp4"), ("All files", "*.*")],
         )
         if path:
             self.encode_output.set(path)
@@ -183,9 +183,9 @@ class VideoEncodeApp(tk.Tk):
             self.decode_output.set(path)
 
     def _config(self) -> CodecConfig:
-        codec = self.codec_var.get().strip() or "mp4v"
+        codec = self.codec_var.get().strip() or "FFV1"
         if len(codec) < 4:
-            codec = (codec + "mp4v")[:4]
+            codec = (codec + "FFV1")[:4]
         codec = codec[:4]
 
         config = CodecConfig(

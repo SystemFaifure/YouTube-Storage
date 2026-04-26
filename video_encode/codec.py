@@ -16,7 +16,7 @@ ProgressCallback = Optional[Callable[[int, int, str], None]]
 class CodecConfig:
     width: int = 2560
     height: int = 1440
-    pixel_size: int = 4
+    pixel_size: int = 8
     fps: int = 30
     frames_per_chunk: int = 1
     codec: str = "FFV1"
