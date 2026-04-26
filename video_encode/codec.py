@@ -14,10 +14,10 @@ ProgressCallback = Optional[Callable[[int, int, str], None]]
 
 @dataclass
 class CodecConfig:
-    width: int = 2560
-    height: int = 1440
-    pixel_size: int = 8
-    fps: int = 30
+    width: int = 3840
+    height: int = 2160
+    pixel_size: int = 12
+    fps: int = 60
     frames_per_chunk: int = 1
     codec: str = "x264"
     tolerance: int = 120
