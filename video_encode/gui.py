@@ -32,10 +32,10 @@ class VideoEncodeApp(tk.Tk):
 
         self.width_var = tk.IntVar(value=2560)
         self.height_var = tk.IntVar(value=1440)
-        self.pixel_size_var = tk.IntVar(value=8)
+        self.pixel_size_var = tk.IntVar(value=4)
         self.fps_var = tk.IntVar(value=30)
         self.frames_per_chunk_var = tk.IntVar(value=1)
-        self.codec_var = tk.StringVar(value="x264")
+        self.codec_var = tk.StringVar(value="FFV1")
         self.tolerance_var = tk.IntVar(value=120)
 
         self.status_var = tk.StringVar(value="Ready")

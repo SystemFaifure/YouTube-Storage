@@ -47,15 +47,15 @@ The app reports PASS/FAIL based on SHA-256 hash equality.
 
 - Width: '2560'
 - Height: '1440'
-- Pixel size: '8'
+- Pixel size: '4'
 - FPS: '30'
 - Frames per chunk: '1'
-- Codec: 'x264' for '.avi'
+- Codec: 'FFV1' for '.avi'
 
-If your machine cannot open/write MP4 with 'x264', use:
+If your machine cannot open/write AVI with 'FFV1', use:
 
-- Codec: 'MJPG'/'FFV1'
-- Output extension: '.avi'
+- Codec:		'MJPG'/'mp4v'
+- Output extension:	'.avi'/'.mp4'
 
 One-click option: In **Settings**, click **Apply High-Accuracy Preset**.
 This sets 'FFV1', 'pixel_size=8', 'tolerance=120', and updates output extension to '.avi'.
