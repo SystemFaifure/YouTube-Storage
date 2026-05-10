@@ -11,10 +11,10 @@ This repository now includes a full Python implementation with a desktop GUI for
 ## Tech Stack
 
 - Python 3.9+
-- OpenCV-Python
-- OpenCV-Python-Headless
 - NumPy
 - Packaging
+- OpenCV-Python
+- OpenCV-Contrib-Python-Headless
 
 ## Quick Start (Windows)
 
