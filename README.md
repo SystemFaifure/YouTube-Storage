@@ -62,5 +62,5 @@ You can also click **Run Round-Trip Test** in **Settings** to run a full random-
 ## Notes
 
 - Encoder and decoder must use matching settings (resolution, pixel size, frames-per-chunk, tolerance).
-- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, '' + '.avi') and larger pixel sizes.
+- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, 'MJLS' + '.avi') and larger pixel sizes.
 - After decode, the GUI automatically runs a hash check when the original input file path is available.
