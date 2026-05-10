@@ -14,13 +14,13 @@ ProgressCallback = Optional[Callable[[int, int, str], None]]
 
 @dataclass
 class CodecConfig:
-    width: int = 2560
-    height: int = 1440
-    pixel_size: int = 8
-    fps: int = 30
+    width: int = 3840
+    height: int = 2160
+    pixel_size: int = 4
+    fps: int = 60
     frames_per_chunk: int = 1
-    codec: str = "FFV1"
-    tolerance: int = 120
+    codec: str = "MJLS"
+    tolerance: int = 60
 
     @property
     def bytes_per_frame(self) -> int:
@@ -117,7 +117,7 @@ def encode_file_to_video(
     writer = cv2.VideoWriter(str(output_path), fourcc, config.fps, (config.width, config.height))
     if not writer.isOpened():
         raise RuntimeError(
-            "Could not open video writer. Try codec='FFV1' with .avi output, or verify your OpenCV build supports the selected codec."
+            "Could not open video writer. Try codec='LJPG'/'MJPG' with .avi output, or verify your OpenCV build supports the selected codec."
         )
 
     total_chunks = estimate_frame_count(input_path, config)
@@ -230,7 +230,7 @@ def run_roundtrip_integrity_check(
     base.mkdir(parents=True, exist_ok=True)
 
     input_file = base / "roundtrip_input.bin"
-    encoded_video = base / ("roundtrip_encoded.avi" if config.codec.upper() == "FFV1" else "roundtrip_encoded.mp4")
+    encoded_video = base / ("roundtrip_encoded.avi" if config.codec.upper() == "MJLS" else "roundtrip_encoded.mp4")
     decoded_file = base / "roundtrip_decoded.bin"
 
     input_file.write_bytes(os.urandom(sample_bytes))

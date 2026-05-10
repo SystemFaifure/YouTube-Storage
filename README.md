@@ -45,25 +45,22 @@ The app reports PASS/FAIL based on SHA-256 hash equality.
 
 ## Recommended Settings
 
-- Width: '2560'
-- Height: '1440'
+- Width: '3840'
+- Height: '2160'
 - Pixel size: '4'
-- FPS: '30'
+- FPS: '60'
 - Frames per chunk: '1'
-- Codec: 'FFV1' for '.avi'
+- Codec: 'MJLS' for '.avi'
 
-If your machine cannot open/write AVI with 'FFV1', use:
-
-- Codec:		'MJPG'/'mp4v'
-- Output extension:	'.avi'/'.mp4'
+If your machine cannot open/write AVI with MJLS, use: 'LJPG'/'MJPG'
 
 One-click option: In **Settings**, click **Apply High-Accuracy Preset**.
-This sets 'FFV1', 'pixel_size=8', 'tolerance=120', and updates output extension to '.avi'.
+This sets 'MJLS', 'pixel_size=8', 'tolerance=60', and updates output extension to '.avi'.
 
 You can also click **Run Round-Trip Test** in **Settings** to run a full random-file test and get a GUI PASS/FAIL result.
 
 ## Notes
 
 - Encoder and decoder must use matching settings (resolution, pixel size, frames-per-chunk, tolerance).
-- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, 'FFV1' + '.avi') and larger pixel sizes.
+- Compression artifacts can reduce decode accuracy with some codecs/settings. If accuracy is critical, prefer less lossy settings (for example, '' + '.avi') and larger pixel sizes.
 - After decode, the GUI automatically runs a hash check when the original input file path is available.
