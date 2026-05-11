@@ -14,13 +14,13 @@ ProgressCallback = Optional[Callable[[int, int, str], None]]
 
 @dataclass
 class CodecConfig:
-    width: int = 3840
-    height: int = 2160
+    width: int = 2560
+    height: int = 1440
     pixel_size: int = 8
-    fps: int = 60
+    fps: int = 30
     frames_per_chunk: int = 1
     codec: str = "MJLS"
-    tolerance: int = 60
+    tolerance: int = 30
 
     @property
     def bytes_per_frame(self) -> int:
