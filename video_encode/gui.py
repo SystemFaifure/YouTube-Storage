@@ -32,7 +32,7 @@ class VideoEncodeApp(tk.Tk):
 
         self.width_var = tk.IntVar(value=3840)
         self.height_var = tk.IntVar(value=2160)
-        self.pixel_size_var = tk.IntVar(value=4)
+        self.pixel_size_var = tk.IntVar(value=8)
         self.fps_var = tk.IntVar(value=60)
         self.frames_per_chunk_var = tk.IntVar(value=1)
         self.codec_var = tk.StringVar(value="MJLS")
@@ -218,7 +218,7 @@ class VideoEncodeApp(tk.Tk):
         self.roundtrip_btn.configure(state=state)
 
     def _apply_high_accuracy_preset(self) -> None:
-        self.codec_var.set("MJLS")
+        self.codec_var.set("FFV1")
         self.pixel_size_var.set(8)
         self.fps_var.set(60)
         self.frames_per_chunk_var.set(1)
@@ -232,7 +232,7 @@ class VideoEncodeApp(tk.Tk):
         if decode_in:
             self.decode_input.set(str(Path(decode_in).with_suffix(".avi")))
 
-        self._log("Applied high-accuracy preset: codec=MJLS, pixel_size=8, tolerance=60, output=.avi")
+        self._log("Applied high-accuracy preset: codec=FFV1, pixel_size=8, tolerance=60, output=.avi")
         self._set_status("High-accuracy preset applied")
 
     def _start_encode(self) -> None:
