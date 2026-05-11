@@ -30,13 +30,13 @@ class VideoEncodeApp(tk.Tk):
         self.decode_input = tk.StringVar(value="videos/output.avi")
         self.decode_output = tk.StringVar(value="testfiles/decoded.bin")
 
-        self.width_var = tk.IntVar(value=3840)
-        self.height_var = tk.IntVar(value=2160)
+        self.width_var = tk.IntVar(value=2560)
+        self.height_var = tk.IntVar(value=1440)
         self.pixel_size_var = tk.IntVar(value=8)
-        self.fps_var = tk.IntVar(value=60)
+        self.fps_var = tk.IntVar(value=30)
         self.frames_per_chunk_var = tk.IntVar(value=1)
         self.codec_var = tk.StringVar(value="MJLS")
-        self.tolerance_var = tk.IntVar(value=60)
+        self.tolerance_var = tk.IntVar(value=30)
 
         self.status_var = tk.StringVar(value="Ready")
         self.progress_var = tk.DoubleVar(value=0.0)
@@ -220,9 +220,9 @@ class VideoEncodeApp(tk.Tk):
     def _apply_high_accuracy_preset(self) -> None:
         self.codec_var.set("FFV1")
         self.pixel_size_var.set(8)
-        self.fps_var.set(60)
+        self.fps_var.set(30)
         self.frames_per_chunk_var.set(1)
-        self.tolerance_var.set(60)
+        self.tolerance_var.set(30)
 
         encode_out = self.encode_output.get().strip()
         decode_in = self.decode_input.get().strip()
@@ -232,7 +232,7 @@ class VideoEncodeApp(tk.Tk):
         if decode_in:
             self.decode_input.set(str(Path(decode_in).with_suffix(".avi")))
 
-        self._log("Applied high-accuracy preset: codec=FFV1, pixel_size=8, tolerance=60, output=.avi")
+        self._log("Applied high-accuracy preset: codec=FFV1, pixel_size=8, tolerance=30, output=.avi")
         self._set_status("High-accuracy preset applied")
 
     def _start_encode(self) -> None:

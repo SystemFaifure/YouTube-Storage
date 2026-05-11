@@ -45,17 +45,17 @@ The app reports PASS/FAIL based on SHA-256 hash equality.
 
 ## Recommended Settings
 
-- Width: '3840'
-- Height: '2160'
+- Width: '2560'
+- Height: '1440'
 - Pixel size: '8'
-- FPS: '60'
+- FPS: '30'
 - Frames per chunk: '1'
 - Codec: 'MJLS' for '.avi'
 
 If your machine cannot open/write AVI with MJLS, use: 'LJPG'/'MJPG'
 
 One-click option: In **Settings**, click **Apply High-Accuracy Preset**.
-This sets 'FFV1', 'pixel_size=8', 'tolerance=60', and updates output extension to '.avi'.
+This sets 'FFV1', 'pixel_size=8', 'tolerance=30', and updates output extension to '.avi'.
 
 You can also click **Run Round-Trip Test** in **Settings** to run a full random-file test and get a GUI PASS/FAIL result.
 
